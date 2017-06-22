@@ -14,8 +14,6 @@ class Convert2csv:
             f = open(self.filename)
             reader = csv.reader(f, delimiter=',')
             for row in reader:
-                # for list_index in row:
-                #     words = list_index.split(",")
                 ws.append(row)
 
             f.close()
