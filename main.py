@@ -22,12 +22,15 @@ if os.path.isfile(filename):
                     ws1.cell(row=index1, column=index2).value = piece.value
                 else:
                     count = column_count - 3
+                    check_null = 0
                     row = 0
                     row = row_count
 
                     while count > 0:
-                        ws1.cell(row=row, column=index2).value = piece.value
+                        if line[3 + check_null].value:
+                            ws1.cell(row=row, column=index2).value = piece.value
                         count -= 1
+                        check_null += 1
                         row += 1
                     if max_current_row < row:
                         max_current_row = row
