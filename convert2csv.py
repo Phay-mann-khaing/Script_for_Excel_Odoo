@@ -1,9 +1,9 @@
 import csv
 import openpyxl
 
-
 class Convert2csv:
-    def __init__(self):
+    def __init__(self, filename=None):
+        self.filename = filename
         self.convert2csv()
 
     def convert2csv(self):
@@ -11,22 +11,19 @@ class Convert2csv:
             wb = openpyxl.Workbook()
             ws = wb.active
 
-            f = open('/home/phay/PycharmProjects/product.product.csv')
+            f = open(self.filename)
             reader = csv.reader(f, delimiter=',')
             for row in reader:
-                # for list_index in row:
-                #     words = list_index.split(",")
                 ws.append(row)
 
             f.close()
 
-            wb.save('productcorrect.xlsx')
+            wb.save('/home/phay/PycharmProjects/Convertedtoxlsx.xlsx')
 
         except ValueError:
             print 'File invalid'
             # except CustomException, (instance):
             #     self.ok = False
-
 
 # class CustomException(Exception):
 #     def __init__(self, value):
