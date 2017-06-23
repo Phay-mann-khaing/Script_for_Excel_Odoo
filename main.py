@@ -34,6 +34,9 @@ if os.path.isfile(filename):
                     while count > 0:  # for same product that has quantities in different location
                         if line[3 + check_null].value:  # check location to write new row for it
                             ws1.cell(row=row, column=index2).value = piece.value
+                            ws1.cell(row=row, column=4).value = line[3 + check_null].value
+                            a = line[3 + check_null].column
+                            ws1.cell(row=row, column=5).value = ws['%s1' % a].value
                             row += 1
                         count -= 1
                         check_null += 1
@@ -58,7 +61,8 @@ if os.path.isfile(filename):
         ws1['A1'] = 'line_ids/product_id/id'
         ws1['B1'] = 'Product Name'
         ws1['C1'] = 'line_ids/product_uom/id'
-
+        ws1['D1'] = 'line_ids/product_qty'
+        ws1['E1'] = 'line_ids/location_id/id'
         # Save file
         wb1.save("/home/phay/PycharmProjects/TestCreate.xlsx")
         print "Flie created as 'TestCreate.xlsx'"
