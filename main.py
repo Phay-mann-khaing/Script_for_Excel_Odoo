@@ -19,9 +19,14 @@ if os.path.isfile(filename):
         for index1, line in enumerate(a, 1):
             for index2, piece in enumerate(line, 1):
                 if index1 == 1:
-                    ws1.cell(row=index1, column=index2).value = piece.value
+                    if index2 < 4:
+                        ws1.cell(row=index1, column=index2).value = piece.value
+                    else:
+                        break
                 else:
                     count = column_count - 3
+                    if count + 1 == index2:
+                        break
                     check_null = 0
                     row = 0
                     row = row_count
