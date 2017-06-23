@@ -39,7 +39,7 @@ class Convert2xlsx:
         for sheet_index in range(0, len(sheet_names)):
             sheet_xls = book_xls.sheet_by_name(sheet_names[sheet_index])
             if sheet_index == 0:
-                sheet_xlsx = book_xlsx.active()
+                sheet_xlsx = book_xlsx.active
                 sheet_xlsx.title = sheet_names[sheet_index]
             else:
                 sheet_xlsx = book_xlsx.create_sheet(title=sheet_names[sheet_index])

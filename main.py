@@ -5,11 +5,11 @@ import openpyxl
 filename = raw_input("File Name: ")
 if os.path.isfile(filename):
     if filename.endswith('.csv'):
-        test = csv2xlsx.Convert2csv(filename, is_csv=1)
+        test = csv2xlsx.Convert2xlsx(filename, is_csv=1)
         print 'csv file converted to xlsx extension'
 
     elif filename.endswith('.xls'):
-        conv_2_xlsx = csv2xlsx.Convert2csv(filename, is_xls=1)
+        conv_2_xlsx = csv2xlsx.Convert2xlsx(filename, is_xls=1)
         print 'xls file converted to xlsx extension'
 
     elif filename.endswith('.xlsx'):
@@ -29,6 +29,8 @@ if os.path.isfile(filename):
                     else:
                         break
                 else:  # for body of rows
+                    if index2 > 3:
+                        break
                     count = column_count - 3
                     if count + 1 == index2:  # don't write location
                         break
@@ -38,10 +40,10 @@ if os.path.isfile(filename):
 
                     while count > 0:  # for same product that has quantities in different location
                         if line[3 + check_null].value:  # check location to write new row for it
-                            ws1.cell(row=row, column=index2).value = piece.value
-                            ws1.cell(row=row, column=4).value = line[3 + check_null].value
+                            ws1.cell(row=row, column=index2+2).value = piece.value
+                            ws1.cell(row=row, column=6).value = line[3 + check_null].value
                             a = line[3 + check_null].column
-                            ws1.cell(row=row, column=5).value = ws['%s1' % a].value
+                            ws1.cell(row=row, column=7).value = ws['%s1' % a].value
                             row += 1
                         count -= 1
                         check_null += 1
@@ -63,11 +65,13 @@ if os.path.isfile(filename):
         #     ['line_ids/product_qty', 'line_ids/location_id/id', 'line_ids/product_id/id', 'line_ids/product_uom/id'])
 
         # Change Headers
-        ws1['A1'] = 'line_ids/product_id/id'
-        ws1['B1'] = 'Product Name'
-        ws1['C1'] = 'line_ids/product_uom/id'
-        ws1['D1'] = 'line_ids/product_qty'
-        ws1['E1'] = 'line_ids/location_id/id'
+        ws1['A1'] = 'name'
+        ws1['B1'] = 'location_id/id'
+        ws1['C1'] = 'line_ids/product_id/id'
+        ws1['D1'] = 'Product Name'
+        ws1['E1'] = 'line_ids/product_uom/id'
+        ws1['F1'] = 'line_ids/product_qty'
+        ws1['G1'] = 'line_ids/location_id/id'
         # Save file
         wb1.save("/home/phay/PycharmProjects/TestCreate.xlsx")
         print "Flie created as 'TestCreate.xlsx'"
