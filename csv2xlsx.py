@@ -2,6 +2,7 @@ import csv
 import openpyxl
 import xlrd
 from openpyxl.workbook import Workbook
+import convert_into_importable
 
 
 class Convert2xlsx:
@@ -25,8 +26,11 @@ class Convert2xlsx:
                 ws.append(row)
 
             f.close()
-
-            wb.save('/home/phay/PycharmProjects/Convertedtoxlsx.xlsx')
+            new_xlsx = '/home/phay/PycharmProjects/Convertedtoxlsx.xlsx'
+            wb.save(new_xlsx)
+            self.filename=new_xlsx
+            # convert_into_importable.Convert2importable(new_xlsx)
+            # return new_xlsx
 
         except ValueError:
             print 'File invalid'
@@ -48,4 +52,5 @@ class Convert2xlsx:
                 for col in range(0, sheet_xls.ncols):
                     sheet_xlsx.cell(row=row + 1, column=col + 1).value = sheet_xls.cell_value(row, col)
 
-        book_xlsx.save('/home/phay/PycharmProjects/Convertedtoxlsx.xlsx')
+        new_xlsx = book_xlsx.save('/home/phay/PycharmProjects/Convertedtoxlsx.xlsx')
+        return new_xlsx
