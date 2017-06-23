@@ -1,12 +1,17 @@
-import convert2csv
+import csv2xlsx
 import os
 import openpyxl
 
 filename = raw_input("File Name: ")
 if os.path.isfile(filename):
     if filename.endswith('.csv'):
-        test = convert2csv.Convert2csv(filename)
+        test = csv2xlsx.Convert2csv(filename, is_csv=1)
         print 'csv file converted to xlsx extension'
+
+    elif filename.endswith('.xls'):
+        conv_2_xlsx = csv2xlsx.Convert2csv(filename, is_xls=1)
+        print 'xls file converted to xlsx extension'
+
     elif filename.endswith('.xlsx'):
         wb = openpyxl.load_workbook(filename)
         wb1 = openpyxl.Workbook()  # new file
