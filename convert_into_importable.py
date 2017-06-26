@@ -67,5 +67,5 @@ class Convert2importable:
         ws1['F1'] = 'line_ids/product_qty'
         ws1['G1'] = 'line_ids/location_id/id'
         # Save file
-        wb1.save("/home/phay/PycharmProjects/TestCreate.xlsx")
+        wb1.save("ToImport.xlsx")
         print "Flie created as 'TestCreate.xlsx'"
