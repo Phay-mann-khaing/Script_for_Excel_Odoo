@@ -6,6 +6,7 @@ import convert_into_importable
 
 
 class Convert2xlsx:
+
     def __init__(self, filename=None, is_csv=None, is_xls=None):
         self.filename = filename
         self.csv = is_csv
@@ -28,8 +29,8 @@ class Convert2xlsx:
             f.close()
             new_xlsx = '/home/phay/PycharmProjects/Convertedtoxlsx.xlsx'
             wb.save(new_xlsx)
-            self.filename=new_xlsx
-            # convert_into_importable.Convert2importable(new_xlsx)
+            self.filename = new_xlsx
+            convert_into_importable.Convert2importable(new_xlsx)
             # return new_xlsx
 
         except ValueError:
@@ -52,5 +53,7 @@ class Convert2xlsx:
                 for col in range(0, sheet_xls.ncols):
                     sheet_xlsx.cell(row=row + 1, column=col + 1).value = sheet_xls.cell_value(row, col)
 
-        new_xlsx = book_xlsx.save('/home/phay/PycharmProjects/Convertedtoxlsx.xlsx')
-        return new_xlsx
+        new_xlsx = '/home/phay/PycharmProjects/Convertedtoxlsx.xlsx'
+        book_xlsx.save(new_xlsx)
+        convert_into_importable.Convert2importable(new_xlsx)
+        # return new_xlsx

@@ -14,7 +14,7 @@ if os.path.isfile(filename):
     if filename.endswith('.csv'):
         csv_to_xlsx = csv2xlsx.Convert2xlsx(filename, is_csv=1)
         print 'csv file converted to xlsx extension'
-        convert_into_importable.Convert2importable(csv2xlsx.filename)
+        # convert_into_importable.Convert2importable(csv2xlsx)
 
     elif filename.endswith('.xls'):
         conv_2_xlsx = csv2xlsx.Convert2xlsx(filename, is_xls=1)
