@@ -1,7 +1,7 @@
 # Script_for_Excel_Odoo
 # Script for Inventory adjustment for odoo
 
-It is based on openpyxl.
+It is based on openpyxl.Tkinter for GUI.
 It can only support for xlsx extension.
 If selected file is csv or xls, it can convert to xlsx extension.
 Selected file must be in the format like
